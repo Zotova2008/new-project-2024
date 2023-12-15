@@ -28,6 +28,10 @@
   }
 
   &__wrapper {
+    @include vp-767 {
+      padding: 60px 16px;
+    }
+
     position: relative;
 
     display: flex;
@@ -37,10 +41,6 @@
     width: 100%;
     min-height: 100%;
     padding: 60px 40px;
-
-    @include media-max($vp-768) {
-      padding: 60px 16px;
-    }
   }
 
   &__overlay {
@@ -55,17 +55,17 @@
   }
 
   &__content {
+    @include vp-767 {
+      width: 100%;
+      padding: 20px;
+    }
+
     position: relative;
 
     width: 600px;
     padding: 40px;
 
     background-color: $color-default-white;
-
-    @include media-max($vp-768) {
-      width: 100%;
-      padding: 20px;
-    }
   }
 
   &__close-btn {
@@ -91,11 +91,11 @@
 
   &--fit-content {
     .modal__content {
-      width: auto;
-
-      @include media-max($vp-768) {
+      @include vp-767 {
         width: 100%;
       }
+
+      width: auto;
     }
   }
 
