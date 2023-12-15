@@ -2,8 +2,8 @@
 
 ```shell
 └── source/
-    └── images/
-        └── icons/
+    └── img/
+        └── sprite/
             ├── tg.svg
             ├── vk.svg
             └── yt.svg
@@ -13,7 +13,6 @@
 
 ```shell
 └── build/
-    └── images/
-        └── icons/                # папка для спрайта
-            └── stack.svg         # спрайт
+    └── img/
+        └── sprite.svg         # спрайт
 ```

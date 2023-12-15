@@ -2,7 +2,7 @@
 
 ```shell
 └── source/
-    └── images/
+    └── img/
         ├── bg.jpg
         ├── bg.webp
         ├── hero.png
@@ -10,11 +10,11 @@
         └── logo.svg
 ```
 
-Отсюда файлы изображений при сборке без изменений попадают в `build/images/`:
+Отсюда файлы изображений при сборке без изменений попадают в `build/img/`:
 
 ```shell
 └── build/
-    └── images/
+    └── img/
         ├── bg.jpg
         ├── bg.webp
         ├── hero.png
