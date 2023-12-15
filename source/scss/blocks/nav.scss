@@ -1,0 +1,10 @@
+.nav__list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.nav__link {
+  font-weight: 600;
+}

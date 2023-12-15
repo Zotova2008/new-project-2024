@@ -1,0 +1,288 @@
+.map {
+  position: relative;
+
+  &.is-open-menu {
+    &::before {
+      position: absolute;
+
+      inset: 0;
+    }
+  }
+}
+
+.map__head {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 30px 189px;
+
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.06);
+}
+
+.map__menu-list {
+  position: absolute;
+  top: calc(100% + 20px);
+  right: 0;
+  left: 0;
+  z-index: 1;
+
+  display: flex;
+  grid-template-columns: repeat(8, auto);
+  gap: 25px;
+  padding: 30px 69px;
+
+  background-color: #ffffff;
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.06);
+  transform: translateX(-1000%);
+  visibility: hidden;
+  opacity: 0;
+
+  transition: transform var(--transition);
+  animation: aniOut 1s forwards;
+
+  .is-open-menu & {
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+
+    animation: aniIn 0.5s forwards;
+  }
+}
+
+.map__title {
+  position: relative;
+
+  margin: 0;
+  padding: 28px 40px 28px 0;
+
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  font-family: $ff-main;
+
+  background-color: transparent;
+  border: none;
+
+  transition: color $trans-default;
+
+  @include hover-focus {
+    color: $color-link-hover;
+  }
+
+  &::after {
+    @include position(50%, auto, -50%, 0);
+
+    content: "";
+    position: absolute;
+    right: 0;
+
+    width: 24px;
+    height: 24px;
+
+    background-color: currentColor;
+
+    transition: transform $trans-default;
+
+    mask-image: url("../../img/sprite.svg#arrow-down");
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
+
+  .is-open-menu &::after {
+    transform: rotate(180deg) translate(0, 50%);
+  }
+}
+
+.map__menu-item {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+
+  & a {
+    font-size: 18px;
+    line-height: 20px;
+    font-family: $ff-other;
+
+    &:first-child {
+      font-weight: 600;
+    }
+  }
+}
+
+.map__btn-container {
+  display: flex;
+  gap: 30px;
+  justify-content: end;
+  align-items: start;
+
+  transition: opacity $trans-default;
+
+  .is-open-menu & {
+    opacity: 0.1;
+  }
+}
+
+.map__head-btn {
+  position: relative;
+
+  padding: 30px 0 28px;
+
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  font-family: $ff-main;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  @include hover-focus {
+    &::before {
+      width: 100%;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+
+    width: 0;
+    height: 4px;
+
+    background-color: $color-link-hover;
+    transform: translateX(-50%);
+
+    transition: width $trans-default;
+  }
+
+  &.is-active {
+    &::before {
+      width: 100%;
+    }
+  }
+}
+
+.map__body {
+  position: relative;
+
+  transition: opacity $trans-default;
+
+  .is-open-menu & {
+    opacity: 0.1;
+  }
+}
+
+.map__body-container {
+  padding: 90px 30px;
+}
+
+.map__link {
+  color: #444444;
+
+  fill: #b01736;
+
+  &[data-map-id="moscow"] {
+    fill: #f2f2f2;
+  }
+
+  &[data-map-id="center"] {
+    opacity: 0.6;
+  }
+
+  &[data-map-id="northwest"] {
+    opacity: 0.4;
+  }
+
+  &[data-map-id="south"] {
+    opacity: 0.7;
+  }
+
+  &[data-map-id="volga"] {
+    opacity: 0.5;
+  }
+
+  &[data-map-id="ural"] {
+    opacity: 0.3;
+  }
+
+  &[data-map-id="siberia"] {
+    opacity: 0.2;
+  }
+
+  &[data-map-id="east"] {
+    opacity: 0.1;
+  }
+}
+
+.map__link {
+  @include hover-focus {
+    opacity: 1;
+  }
+}
+
+.map__city {
+  position: absolute;
+
+  padding-top: 12px;
+
+  font-weight: 600;
+  line-height: 1;
+  color: #444444;
+
+  &::before {
+    @include position(0, 50%, 0, -50%);
+
+    content: "";
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    background-color: currentColor;
+    border-radius: 50%;
+  }
+
+  &--1 {
+    font-size: 16px;
+  }
+
+  &--2 {
+    font-size: 14px;
+  }
+
+  &--3 {
+    font-size: 12px;
+  }
+}
+
+@keyframes aniIn {
+  0% {
+    transform: translateX(-1000%);
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes aniOut {
+  0% {
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-1000%);
+    visibility: hidden;
+    opacity: 0;
+  }
+}
