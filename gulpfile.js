@@ -3,6 +3,22 @@ import { readFileSync, rmSync } from 'node:fs';
 import gulp from 'gulp';
 const { src, dest, watch, series, parallel } = gulp;
 
+const PATH_TO_SOURCE = './source/';
+const PATH_TO_DIST = './build/';
+const PATH_TO_RAW = './raw/';
+const PATHS_TO_STATIC = [
+  `${PATH_TO_SOURCE}fonts/**/*.{woff2,woff}`,
+  `${PATH_TO_SOURCE}*.ico`,
+  `${PATH_TO_SOURCE}*.webmanifest`,
+  `${PATH_TO_SOURCE}favicons/*.{png,svg}`,
+  `${PATH_TO_SOURCE}lib/**/*`,
+  `${PATH_TO_SOURCE}img/**/*`,
+  `${PATH_TO_SOURCE}data/**/*`,
+  `!${PATH_TO_SOURCE}img/sprite/**/*`,
+  `!${PATH_TO_SOURCE}**/README.md`,
+];
+let isDevelopment = true;
+
 import fileInclude from 'gulp-file-include';
 import htmlBeautify from 'gulp-html-beautify';
 import bemlinter from 'gulp-html-bemlinter';
@@ -28,22 +44,6 @@ import webpackStream from 'webpack-stream';
 import webpackConfig from './webpack.config.js';
 
 import server from 'browser-sync';
-
-const PATH_TO_SOURCE = './source/';
-const PATH_TO_DIST = './build/';
-const PATH_TO_RAW = './raw/';
-const PATHS_TO_STATIC = [
-  `${PATH_TO_SOURCE}fonts/**/*.{woff2,woff}`,
-  `${PATH_TO_SOURCE}*.ico`,
-  `${PATH_TO_SOURCE}*.webmanifest`,
-  `${PATH_TO_SOURCE}favicons/*.{png,svg}`,
-  `${PATH_TO_SOURCE}lib/**/*`,
-  `${PATH_TO_SOURCE}img/**/*`,
-  `${PATH_TO_SOURCE}data/**/*`,
-  `!${PATH_TO_SOURCE}img/sprite/**/*`,
-  `!${PATH_TO_SOURCE}**/README.md`,
-];
-let isDevelopment = true;
 
 export function html() {
   return src([`${PATH_TO_SOURCE}**/*.html`, `!${PATH_TO_SOURCE}**/_*.html`])
@@ -96,8 +96,7 @@ export function jsWebpack() {
     .pipe(webpackStream(webpackConfig))
     .pipe(dest(`${PATH_TO_DIST}js`))
     .pipe(server.stream());
-};
-
+}
 
 export function js() {
   const gulpEsbuild = createGulpEsbuild({ incremental: isDevelopment });
@@ -135,7 +134,6 @@ export function optimizeRaster() {
         );
       }
     }
-
     return { formats };
   }
 
