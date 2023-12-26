@@ -1,15 +1,8 @@
 {
-  "extends": "stylelint-config-htmlacademy",
-  "rules": {
-    "codeguide/indentation": [
-      2,
-      {
-        "ignore": [
-          "inside-parens"
-        ]
-      }
-    ]
-  },
+  "extends": [
+    "stylelint-config-htmlacademy"
+  ],
+  "rules": {},
   "ignoreFiles": [
     "vendor/**/*.*"
   ]

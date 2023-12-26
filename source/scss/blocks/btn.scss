@@ -2,32 +2,39 @@
   display: inline-block;
   padding: 18px 28px;
 
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 20px;
   font-family: $ff-main;
-  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
   color: $color-default-white;
+  text-align: center;
+  // background-color: $color-bg;
 
-  background-color: $color-bg;
+  background-image:
+    linear-gradient(rgba(104, 183, 56, 0.85), rgba(104, 183, 56, 0.85)),
+    image-set(url("../../img/intro-bg-desktop@2x.webp") type("image/webp") 2x, url("../../img/intro-bg-desktop@1x.webp") type("image/webp") 1x, url("../../img/intro-bg-desktop@2x.jpg") 2x, url("../../img/intro-bg-desktop@1x.jpg") 1x);
   border: none;
   border-radius: $border-radius;
-  cursor: pointer;
 
   transition: background-color $trans-default;
+
+  cursor: pointer;
 
   @include hover-focus {
     background-color: $color-bg-hover;
   }
-
   @include active {
     opacity: 0.5;
   }
-
   @include disabled {
     opacity: 0.5;
 
     pointer-events: none;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: red;
   }
 
   &--red {
