@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "stylelint-config-htmlacademy"
-  ],
+  "extends": "stylelint-config-htmlacademy",
   "rules": {},
   "ignoreFiles": [
     "vendor/**/*.*"
