@@ -1,4 +1,4 @@
-/* здесь используйте глобальные селекторы img, body, html и так далее*/
+/* здесь используйте глобальные селекторы img, body, html и так далее */
 // :focus-visible {
 //   @include interactive-outline;
 // }
@@ -25,11 +25,11 @@ body {
 html {
   font-family: $ff-main;
   font-size: $fz-default;
-  line-height: $fz-default-lh;
   font-weight: 400;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: $fz-default-lh;
   // font-smooth: always;
   color: $color-default-dark;
   // Что бы при прокрутка была с отступом нужно блоку добавить свойство  scroll-margin-top 50px;
@@ -55,7 +55,7 @@ a {
   @include hover-focus {
     color: $color-link-hover;
   }
-
+  //
   @include active {
     opacity: 0.5;
   }
