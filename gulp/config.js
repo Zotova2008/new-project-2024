@@ -7,9 +7,9 @@ export const PATHS_TO_STATIC = [
   `${PATH_TO_SOURCE}*.webmanifest`,
   `${PATH_TO_SOURCE}favicons/*.{png,svg}`,
   `${PATH_TO_SOURCE}lib/**/*`,
-  `${PATH_TO_SOURCE}img/**/*`,
+  `${PATH_TO_SOURCE}images/**/*`,
   `${PATH_TO_SOURCE}data/**/*`,
-  `!${PATH_TO_SOURCE}img/sprite/**/*`,
+  `!${PATH_TO_SOURCE}images/svg/**/*`,
   `!${PATH_TO_SOURCE}**/README.md`,
 ];
 

@@ -6,6 +6,7 @@ import plumber from 'gulp-plumber';
 import postcss from 'gulp-postcss';
 import gulpSass from 'gulp-sass';
 import csso from 'postcss-csso';
+import rename from 'gulp-rename';
 import postUrl from 'postcss-url';
 import * as dartSass from 'sass';
 const sass = gulpSass(dartSass);
@@ -20,5 +21,6 @@ export function css() {
       autoprefixer(),
       csso()
     ]))
+    .pipe(rename('styles.min.css'))
     .pipe(dest(`${PATH_TO_DIST}css`, { sourcemaps: isDevelopment }));
 }

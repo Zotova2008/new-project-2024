@@ -27,5 +27,6 @@ export function js() {
       sourcemap: isDevelopment,
       target: browserslistToEsbuild(),
     }))
+    .pipe(rename('main.min.js'))
     .pipe(dest(`${PATH_TO_DIST}js`));
 }

@@ -12,8 +12,8 @@
 
 @mixin graphic-retina($filename, $extname: "webp") {
   @supports #{$webp-support} {
-    background-image: image-set(url("../img/#{$filename}.#{$extname}") 1x,
-      url("../img/#{$filename}@2x.#{$extname}") 2x);
+    background-image: image-set(url("../images/#{$filename}.#{$extname}") 1x,
+      url("../images/#{$filename}@2x.#{$extname}") 2x);
   }
 }
 
@@ -21,11 +21,9 @@
   @include media-desktop {
     @include graphic-retina("#{$filename}-desktop", $extname);
   }
-
   @include media-tablet {
     @include graphic-retina("#{$filename}-tablet", $extname);
   }
-
   @include media-mobile {
     @include graphic-retina("#{$filename}-mobile", $extname);
   }
